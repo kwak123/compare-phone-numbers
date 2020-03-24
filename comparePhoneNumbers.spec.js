@@ -102,6 +102,14 @@ const resilience = () => {
   assertNoThrow('resilience - good arguments', () => {
     comparePhoneNumbers(goodArgument, goodArgument);
   });
+
+  assertNoThrow('resilience - first argument null', () => {
+    comparePhoneNumbers(null, goodArgument);
+  });
+
+  assertNoThrow('resilience- second argument null', () => {
+    comparePhoneNumbers(goodArgument, null);
+  });
 };
 
 sanitizeAlphanumeric();

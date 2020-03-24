@@ -7,6 +7,10 @@
  * @returns {boolean} whether numbers are equal
  */
 const comparePhoneNumbers = (phoneNumberOne, phoneNumberTwo) => {
+  if (!phoneNumberOne || !phoneNumberTwo) {
+    return false;
+  }
+
   const sanitizedNumberOne = sanitizeNumber(phoneNumberOne);
   const sanitizedNumberTwo = sanitizeNumber(phoneNumberTwo);
   return sanitizedNumberOne === sanitizedNumberTwo;
