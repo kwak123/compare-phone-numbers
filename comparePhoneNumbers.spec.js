@@ -60,8 +60,17 @@ const simpleNumbers = () => {
   assertExpected('simpleNumbers', shouldBeTrue, true);
 };
 
+const numbersWithCharacters = () => {
+  const uncleanNumberOne = '(123)456.7890';
+  const uncleanNumberTwo = '123.456.7890';
+
+  const shouldBeTrue = comparePhoneNumbers(uncleanNumberOne, uncleanNumberTwo);
+  assertExpected('numbersWithCharacters', shouldBeTrue, true);
+};
+
 sanitizeAlphanumeric();
 sanitizeSpecials();
 simpleNumbers();
+numbersWithCharacters();
 
 console.log('All good!');
