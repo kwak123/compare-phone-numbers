@@ -96,6 +96,17 @@ const numbersInWrongOrder = () => {
   assertExpected('numbersInWrongOrder', shouldBeFalse, false);
 };
 
+const mismatchedCountryCodeNumbers = () => {
+  const numberWithCountryCode = '1-123-456-7890';
+  const numberWithoutCountryCode = '123-456-7890';
+
+  const shouldBeFalse = comparePhoneNumbers(
+    numberWithCountryCode,
+    numberWithoutCountryCode,
+  );
+  assertExpected('mismatchedCountryCodeNumbers', shouldBeFalse, false);
+};
+
 // We are just calling the method with some non-String arguments to make sure it doesn't crash
 const resilience = () => {
   const goodArgument = '123456';
@@ -118,6 +129,7 @@ sanitizeSpecials();
 simpleNumbers();
 numbersWithCharacters();
 numbersInWrongOrder();
+mismatchedCountryCodeNumbers();
 resilience();
 
 console.log('All good!');
