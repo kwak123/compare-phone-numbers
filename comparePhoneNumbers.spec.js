@@ -26,6 +26,7 @@ const assertNoThrow = (testName, fn) => {
   try {
     fn();
   } catch (e) {
+    console.error(e);
     throw new assert.AssertionError({ message: `${testName} threw error!` });
   }
 };
