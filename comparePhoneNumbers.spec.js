@@ -12,12 +12,17 @@ const assertExpected = (testName, received, expected) => {
 };
 
 const sanitizeAlphanumeric = () => {
+  const dirtyNumeric = '1234';
+  const sanitizedNumeric = '1234';
+  const resultNumeric = sanitizeNumber(dirtyNumeric);
+  assertExpected('sanitizeNumber - numeric', resultNumeric, sanitizedNumeric);
+
   const dirtyAlphanumeric = '1f2f3f4f';
   const sanitizedAlphanumeric = '1234';
-  const result = sanitizeNumber(dirtyAlphanumeric);
+  const resultAlphanumeric = sanitizeNumber(dirtyAlphanumeric);
   assertExpected(
     'sanitizeNumber - alphanumeric',
-    result,
+    resultAlphanumeric,
     sanitizedAlphanumeric,
   );
 };
