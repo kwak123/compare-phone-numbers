@@ -30,8 +30,26 @@ const sanitizeAlphanumeric = () => {
 const sanitizeSpecials = () => {
   const dirtyWithPeriods = '1.2.3.4.';
   const sanitizedWithPeriods = '1234';
-  const result = sanitizeNumber(dirtyWithPeriods);
-  assertExpected('sanitizeNumber - periods', result, sanitizedWithPeriods);
+  const resultWithPeriods = sanitizeNumber(dirtyWithPeriods);
+  assertExpected(
+    'sanitizeNumber - periods',
+    resultWithPeriods,
+    sanitizedWithPeriods,
+  );
+
+  const dirtyWithParentheses = '(12)3(4)';
+  const sanitizedWithParentheses = '1234';
+  const resultWithParentheses = sanitizeNumber(dirtyWithParentheses);
+  assertExpected(
+    'sanitizeNumber - parentheses',
+    resultWithParentheses,
+    sanitizedWithParentheses,
+  );
+
+  const dirtyMixed = '(1)2.3.(4)';
+  const sanitizedMixed = '1234';
+  const resultMixed = sanitizeNumber(dirtyMixed);
+  assertExpected('sanitizeNumber - mixed', resultMixed, sanitizedMixed);
 };
 
 const simpleNumbers = () => {
