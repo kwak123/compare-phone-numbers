@@ -22,6 +22,13 @@ const sanitizeAlphanumeric = () => {
   );
 };
 
+const sanitizeSpecials = () => {
+  const dirtyWithPeriods = '1.2.3.4.';
+  const sanitizedWithPeriods = '1234';
+  const result = sanitizeNumber(dirtyWithPeriods);
+  assertExpected('sanitizeNumber - periods', result, sanitizedWithPeriods);
+};
+
 const simpleNumbers = () => {
   const simpleNumberOne = '1234567890';
   const simpleNumberTwo = '1234567890';
@@ -31,6 +38,7 @@ const simpleNumbers = () => {
 };
 
 sanitizeAlphanumeric();
+sanitizeSpecials();
 simpleNumbers();
 
 console.log('All good!');
