@@ -4,11 +4,30 @@ const {
 } = require('./comparePhoneNumbers');
 const assert = require('assert');
 
+/**
+ * Asserts two values are strictly equal
+ * @param {string} testName
+ * @param {*} received
+ * @param {*} expected
+ */
 const assertExpected = (testName, received, expected) => {
   assert(
     received === expected,
     `${testName} failed! Got ${received}, expected ${expected}`,
   );
+};
+
+/**
+ * Calls a function to see if it throws
+ * @param {string} testName
+ * @param {() => any} fn potentially throwing function
+ */
+const assertNoThrow = (testName, fn) => {
+  try {
+    fn();
+  } catch (e) {
+    throw new assert.AssertionError({ message: `${testName} threw error!` });
+  }
 };
 
 const sanitizeAlphanumeric = () => {
@@ -76,10 +95,20 @@ const numbersInWrongOrder = () => {
   assertExpected('numbersInWrongOrder', shouldBeFalse, false);
 };
 
+// We are just calling the method with some non-String arguments to make sure it doesn't crash
+const resilience = () => {
+  const goodArgument = '123456';
+
+  assertNoThrow('resilience - good arguments', () => {
+    comparePhoneNumbers(goodArgument, goodArgument);
+  });
+};
+
 sanitizeAlphanumeric();
 sanitizeSpecials();
 simpleNumbers();
 numbersWithCharacters();
 numbersInWrongOrder();
+resilience();
 
 console.log('All good!');
