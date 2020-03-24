@@ -68,9 +68,18 @@ const numbersWithCharacters = () => {
   assertExpected('numbersWithCharacters', shouldBeTrue, true);
 };
 
+const numbersInWrongOrder = () => {
+  const numberOrderOne = '1234';
+  const numberOrderTwo = '4321';
+
+  const shouldBeFalse = comparePhoneNumbers(numberOrderOne, numberOrderTwo);
+  assertExpected('numbersInWrongOrder', shouldBeFalse, false);
+};
+
 sanitizeAlphanumeric();
 sanitizeSpecials();
 simpleNumbers();
 numbersWithCharacters();
+numbersInWrongOrder();
 
 console.log('All good!');
