@@ -6,4 +6,23 @@
  * @param {string} phoneNumberTwo
  * @returns {boolean} whether numbers are equal
  */
-module.exports = (phoneNumberOne, phoneNumberTwo) => {};
+const comparePhoneNumbers = (phoneNumberOne, phoneNumberTwo) => {
+  const sanitizedNumberOne = sanitizeNumber(phoneNumberOne);
+  const sanitizedNumberTwo = sanitizeNumber(phoneNumberTwo);
+  return sanitizedNumberOne === sanitizedNumberTwo;
+};
+
+/**
+ * Strips non-digit characters from a String
+ * @param {string} dirtyNumberString
+ * @returns {string} digits-only string
+ */
+const sanitizeNumber = dirtyNumberString => {
+  const nonDigitsRegex = /[^\d]/g;
+  return dirtyNumberString.replace(nonDigitsRegex, '');
+};
+
+module.exports = {
+  comparePhoneNumbers,
+  sanitizeNumber,
+};
