@@ -83,9 +83,31 @@ const simpleNumbers = () => {
 const numbersWithCharacters = () => {
   const uncleanNumberOne = '(123)456.7890';
   const uncleanNumberTwo = '123.456.7890';
+  const cleanNumber = '1234567890';
 
-  const shouldBeTrue = comparePhoneNumbers(uncleanNumberOne, uncleanNumberTwo);
-  assertExpected('numbersWithCharacters', shouldBeTrue, true);
+  const uncleanWithUnclean = comparePhoneNumbers(
+    uncleanNumberOne,
+    uncleanNumberTwo,
+  );
+  assertExpected(
+    'numbersWithCharacters - unclean with unclean',
+    uncleanWithUnclean,
+    true,
+  );
+
+  const cleanWithUnclean = comparePhoneNumbers(cleanNumber, uncleanNumberOne);
+  assertExpected(
+    'numbersWithCharacters - clean with unclean',
+    cleanWithUnclean,
+    true,
+  );
+
+  const uncleanWithClean = comparePhoneNumbers(uncleanNumberOne, cleanNumber);
+  assertExpected(
+    'numbersWithCharacters - unclean with clean',
+    uncleanWithClean,
+    true,
+  );
 };
 
 const numbersInWrongOrder = () => {
